@@ -57,6 +57,9 @@ $ ->
         $.ajax
           url: $this.data("sortable-url")
           type: "post"
+          headers: {
+            'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+          }
           data: $this.nestedSortable("serialize")
         .always ->
           $this.find('.item').each (index) ->
